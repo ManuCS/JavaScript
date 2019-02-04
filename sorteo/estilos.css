@@ -1,0 +1,66 @@
+
+/*Aplico color al fondo del body*/
+*{
+	overflow: auto;
+}
+body{
+	background: url(images/adivino.png), url(images/mago-sumon.png);
+	background-position: right center, left center;
+	background-repeat: no-repeat;
+	background-size: 25% auto;
+	background-color: paleturquoise;
+}
+
+h1{
+	text-align: center;
+	width:30%;
+	margin: auto;
+	margin-bottom: 1em;
+	font-family: 'Indie Flower', cursive;
+	color:palevioletred;
+	text-decoration: underline;
+}
+
+.contenedor{
+	text-align: center;
+}
+
+/*Para centrarlo en la página*/
+.botones{
+	width: 35%;
+	margin:auto;
+}
+/*Para en vez de horizontal, vertical*/
+/*.contenedor div{
+	float:left;
+	width: 3em;
+}*/
+
+
+button{
+	float: left;
+	overflow: hidden;
+	/*display: block;*/
+	width: 3em;
+	height: 3em;
+	margin: .2em;
+	border-radius: 50%;
+	background-color: DodgerBlue;
+	/* border: none; */
+	color: white; 
+	cursor: pointer;
+	/* border:1px dashed black; */
+}
+
+button:hover {
+    background-color: RoyalBlue;
+}
+
+
+input[type="submit"]{
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+	width: 10%;
+	font-size: 1.1em;
+	margin-top: 2em;
+}

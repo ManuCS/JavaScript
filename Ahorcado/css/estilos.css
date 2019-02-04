@@ -1,0 +1,48 @@
+body{
+    background-color: #287233;
+    font-family: tiza;
+    background-image: url(../images/Phoenix.png);
+    background-size: 250px 200px;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+div #ahorcado{
+    float: right;
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+}
+@font-face{
+    font-family: agentred;
+    src: url(../fuentes/AGENTRED.TTF);
+}
+
+@font-face{
+    font-family: tiza;
+    src: url(../fuentes/Colored\ Crayons.ttf)
+}
+
+h1 {
+    font-family: agentred;
+    text-align: center;
+    color:white;
+}
+
+#palabra{
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 2em;
+    margin-left: 1.3em;
+}
+
+#letras{
+    font-size: 2em;
+}
+
+.pizarra{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+    COLOR:white;
+}

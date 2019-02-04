@@ -1,0 +1,45 @@
+body{
+    background-image: url(Images/f3f932cfdb14a56210a92e5d0073e7bd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow:auto;
+    font-family: digital;
+}
+
+@font-face{
+    font-family: digital;
+    src: url(fuente/alarm\ clock.ttf);
+}
+
+.contenedor{
+    width: 100%;
+}
+
+p#crono{
+    text-align: center;
+    font-size:5em;
+    font-weight: bold;
+    color: black; 
+    /* background-color: white; */
+    width: 450px;
+    /* margin:auto; */
+    margin-left: 4%;
+    margin-top: 2em;
+    margin-bottom: .4em;
+}
+
+.botones{
+    width: 400px;
+    margin-left: 5%;
+}
+
+button{
+    width: 30%;
+    margin:0;
+    height: 35px;
+}
+
+#tiempos{
+    width: 30%;
+    margin-left: 5%;
+}

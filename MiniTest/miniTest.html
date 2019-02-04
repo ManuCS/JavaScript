@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MiniTest</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    
+    <script>
+        var intentos = 0;
+        function Corregir() {
+            intentos++;
+            document.getElementById("boton").innerHTML = "Reintentar";
+
+            var puntos = 0;
+            var input = document.getElementsByTagName("input");
+
+            //Primera pregunta
+            if (input[0].checked && input[3].checked && !input[1].checked && !input[2].checked) {
+                puntos++;
+            }
+            else if ((input[0].checked || input[3].checked) && !input[1].checked && !input[2].checked) {
+                puntos = puntos + 0.5;
+            }
+
+
+            //Segunda pregunta
+            if (input[4].checked && !input[5].checked && !input[6].checked && !input[7].checked) {
+                puntos++;
+            }
+
+
+            //Tercera pregunta
+            if (document.getElementById("stfa").selected == true) {
+                puntos++;
+            }
+
+            //Cuarta pregunta
+            if (/^select$/i.test(document.getElementById("ultima").value) == true) {
+                puntos++;
+            }
+
+
+            //Pongo porcentaje en su párrafo
+            document.getElementById("aciertos").innerHTML = "Porcentaje de aciertos: " + puntos * 25 + "% <br> Intentos: " + intentos;
+
+            //Deshabilito el botón si acierto todas.
+            if (puntos == 4) {
+                document.getElementById("boton").disabled = true;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Test de SQL</h1>
+
+    <div class="primeraPregunta">
+        <fieldset>
+            <legend>1- SQL sirve para:</legend>
+            <label>
+                <input type="checkbox" name="p1" value="M"> Manipular datos.
+            </label><br>
+            <label>
+                <input type="checkbox" name="p1" value="P"> Programar en PHP.
+            </label><br>
+            <label>
+                <input type="checkbox" name="p1" value="J"> Programar en JavaScript.
+            </label><br>
+            <label>
+                <input type="checkbox" name="p1" value="C"> Crear y manipular objetos de BBDD.
+            </label><br>
+        </fieldset>
+    </div>
+    <br>
+    <div class="segundaPregunta">
+        <fieldset>
+            <legend>2- SQL es la abreviatura de:</legend>
+            <label>
+                <input type="radio" name="p2" value="structured"> Structured Query Language
+            </label><br>
+            <label>
+                <input type="radio" name="p2" value="static"> Static Query Language
+            </label><br>
+            <label>
+                <input type="radio" name="p2" value="jquery"> Structured jQuery Language
+            </label><br>
+            <label>
+                <input type="radio" name="p2" value="leng"> Structured Query Lenguage
+            </label><br>
+        </fieldset>
+    </div>
+    <br>
+    <div class="terceraPregunta">
+        <fieldset>
+            <legend>3- Cuál es correcta:</legend>
+            <select name="correcta">
+                <option value="stfa" id="stfa">Select * from alumno;</option>
+                <option value="sfta">Select from * alumno;</option>
+                <option value="saft">Select alumno from *;</option>
+            </select>
+        </fieldset>
+    </div>
+    <br>
+    <div class="cuartaPregunta">
+        <fieldset>
+            <legend>5- Para extraer datos de una base de datos usamos el comando:</legend>
+            <input type="text" name="extraer" id="ultima" placeholder="SELECT/DELETE/UPDATE...">
+        </fieldset>
+    </div>
+    <br>
+    <div class="result">
+        <button id="boton" onclick="Corregir()">Corregir</button>
+        <p id="aciertos"></p>
+    </div>
+
+</body>
+
+</html>

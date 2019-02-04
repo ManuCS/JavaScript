@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        #repite {
+            visibility: hidden;
+        }
+    </style>
+    <script src="diccionario.js"></script>
+    <script>
+        var letras = [];
+        var rnd = Math.floor(Math.random() * diccionario.length);
+        var letra;
+        var palabra = [];
+        var resultado = diccionario[rnd];
+        var fallos = 0;
+        resultado = resultado.toUpperCase();
+
+
+
+        window.onload = function () {
+            for (var i = 0; i < resultado.length; i++) {
+                palabra[i] = "_";
+                document.getElementById("palabra").innerHTML += palabra[i] + " ";
+            }
+            console.log(resultado);
+
+            document.onkeypress = MuestraLetra;
+        }
+
+
+
+        //Función para almacenar en un array la letra que se pulsa por teclado y ponerla en la palabra o no
+        function MuestraLetra(evento) {
+            letra = String.fromCharCode(evento.which);
+            letra = letra.toUpperCase();
+
+
+
+            if (fallos == 7) {
+                // document.getElementById("fallos").innerHTML = fallos + 1;
+                document.getElementById("ahorcado").src = "images/fallos7.jpg";
+                document.getElementById("palabra").innerHTML = "¡Has perdido! La palabra es: <br>" + resultado;
+                return false;
+            }
+            if (palabra.indexOf("_") != -1) {
+                //si no tiene la letra:
+                if (resultado.indexOf(letra) == -1) {
+                    //Si no la ha introducido nunca y además es una letra
+                    if (letras.indexOf(letra) == -1 && /^[A-Za-zñÑ]$/.test(letra) == true) {
+                        letras.push(letra);
+                        document.getElementById("letras").innerHTML = letras;
+                        fallos++;
+                        document.getElementById("ahorcado").src = "images/fallos" + fallos + ".jpg";
+                        // document.getElementById("fallos").innerHTML = "Fallos: " + fallos;
+                        document.getElementById("repite").style.visibility = "hidden";
+
+                    }
+                    //si la ha repetido y es una letra
+                    else if (/^[A-Za-zñÑ]$/.test(letra) == true) {
+                        document.getElementById("repite").style.visibility = "visible";
+                    }
+                }
+                //Si la letra ya está puesta en la palabra
+                else if (palabra.indexOf(letra) != -1) {
+                    document.getElementById("repite").style.visibility = "visible";
+                }
+                else {
+                    //pongo la letra introducida en su posición
+                    for (var i = 0; i < resultado.length; i++) {
+                        if (resultado[i] == letra) {
+                            palabra[i] = letra;
+                        }
+                    }
+                    document.getElementById("repite").style.visibility = "hidden";
+
+                    //quito la palabra para volver a ponerla.
+                    document.getElementById("palabra").innerHTML = "";
+
+                    //la vuelvo a poner
+                    for (var i = 0; i < resultado.length; i++) {
+                        document.getElementById("palabra").innerHTML += palabra[i] + " ";
+                    }
+                }
+
+            }
+
+            if (fallos == 7) {
+                // document.getElementById("fallos").innerHTML = fallos + 1;
+                document.getElementById("ahorcado").src = "images/fallos7.jpg";
+                document.getElementById("palabra").innerHTML = "¡Has perdido! La palabra es: <br>" + resultado;
+                return false;
+            }
+
+            if (palabra.indexOf("_") == -1) {
+                document.getElementById("palabra").innerHTML = "¡Has ganado! La palabra es: <br>" + resultado;
+                document.getElementById("ahorcado").src = "images/gana.gif";
+                event.preventDefault();
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Ahorcado</h1>
+    <div><img src="" alt="" id="ahorcado"></div>
+    <div class="pizarra">
+        <div id="palabra"></div>
+        <div id="letras"></div>
+        <div id="fallos"></div>
+        <div id="repite">¡Has repetido una letra! </div>
+    </div>
+</body>
+
+</html>

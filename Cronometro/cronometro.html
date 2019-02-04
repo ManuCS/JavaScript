@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cronometro</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <script>
+        var iniciado = 0;
+        var intervalo;
+        var horainic;
+        var cont = 1;
+        var array = [];
+
+        //función del intervalo
+        function Intervalo() {
+            var horactual = new Date();
+            var diferencia = horactual - horainic;
+            var crono = new Date(diferencia);
+            crono.setHours(crono.getHours() - 1);
+
+            if (crono.getHours() < 10) {
+                if ((crono.getMilliseconds() / 10) < 10) {
+                    document.getElementById("crono").innerHTML = "0" + crono.toLocaleTimeString() + ":" + "0" + (Math.round(crono.getMilliseconds() / 10));
+                }
+                else {
+                    document.getElementById("crono").innerHTML = "0" + crono.toLocaleTimeString() + ":" + (Math.round(crono.getMilliseconds() / 10));
+                }
+            }
+            else {
+                if ((crono.getMilliseconds() / 10) < 10) {
+                    document.getElementById("crono").innerHTML = crono.toLocaleTimeString() + ":" + "0" + (Math.round(crono.getMilliseconds() / 10));
+                }
+                else {
+                    document.getElementById("crono").innerHTML = crono.toLocaleTimeString() + ":" + (Math.round(crono.getMilliseconds() / 10));
+                }
+            }
+        }
+
+        //Función que controla el inicio, la parada(y continuación) del cronómetro
+        function Inicia() {
+            //Iniciado desde 0
+            if (iniciado == 0) {
+                horainic = new Date();
+
+                intervalo = setInterval(Intervalo, 10)
+
+                iniciado = 1;
+                document.getElementById("start").innerHTML = "Parar";
+            }
+            //Paro el cronómetro
+            else if (iniciado == 1) {
+                clearInterval(intervalo);
+                iniciado = 2;
+                document.getElementById("start").innerHTML = "Continuar";
+
+            }
+            //Continuo desde donde estaba parado
+            else if (iniciado == 2) {
+                intervalo = setInterval(Intervalo, 10);
+                document.getElementById("start").innerHTML = "Parar"
+                iniciado = 1;
+
+            }
+        }
+
+        function Reiniciar() {
+            if (iniciado != 0) {
+                clearInterval(intervalo);
+                iniciado = 0;
+            }
+
+            document.getElementById("crono").innerHTML = "00:00:00:00";
+            document.getElementById("start").innerHTML = "Iniciar";
+            document.getElementById("tiempos").innerHTML = "";
+        }
+
+        function Guardar() {
+            var tiempo = document.getElementById("crono").innerHTML;
+
+            if (cont == 1) {
+                array.push(tiempo);
+                document.getElementById("tiempos").innerHTML = array.join("<br>");
+                cont++;
+            }
+            else if (array.indexOf(tiempo) == -1) {
+                array.push(tiempo);
+                document.getElementById("tiempos").innerHTML =  array.join("<br>");
+            }
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <p id="crono">00:00:00:00</p>
+        <div class="botones">
+            <button id="start" onclick="Inicia()">Iniciar</button>
+            <button onclick="Reiniciar()">Reiniciar</button>
+            <button onclick="Guardar()">Guardar</button>
+        </div>
+        <p id="tiempos"></p>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body{
+    background-color: paleturquoise;
+    font-family: 'Indie Flower', cursive;
+}
+
+div{
+    width: 50%;
+    margin: auto;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.result{
+    margin:auto;
+    text-align: center;
+}
+
+button{
+    width: 7em;
+    height: 3em;
+}
+

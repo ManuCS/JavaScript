@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sorteo</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <script>
+        var numeroSuerte = Math.floor(Math.random() * 100) + 1; //Entre 1 y 100
+        console.log(numeroSuerte);
+
+        function Again() {
+            location.reload();
+        }
+
+        window.onload = function () {
+
+            var botones = document.getElementsByTagName("button");
+
+            for (var i = 0; i < botones.length; i++) {
+                botones[i].onclick = Prueba;
+            }
+            console.log(botones);
+            function Prueba() {
+                // this.style.backgroundColor = "red";
+
+                if (this.innerHTML > numeroSuerte) {
+                    this.style.backgroundColor = "#f44336";
+                    for (var i = this.innerHTML - 1; i < 100; i++) {
+                        botones[i].disabled = "disabled";
+                        botones[i].style.backgroundColor = "#f44336";
+                    }
+                }
+                else {
+                    if (this.innerHTML < numeroSuerte) {
+                        this.style.backgroundColor = "#f44336";
+
+                        for (var i = this.innerHTML - 1; i >= 0; i--) {
+                            botones[i].disabled = "disabled";
+                            botones[i].style.backgroundColor = "#f44336";
+                        }
+                    }
+                    else {
+                        this.style.backgroundColor = "#4CAF50";
+
+                        for (var i = this.innerHTML - 2; i >= 0; i--) {
+                            botones[i].disabled = "disabled";
+                            botones[i].style.backgroundColor = "#f44336";
+                        }
+                        for (var i = this.innerHTML; i < 100; i++) {
+                            botones[i].disabled = "disabled";
+                            botones[i].style.backgroundColor = "#f44336";
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Adivina el número oculto</h1>
+    <div class="contenedor">
+        <div class="botones">
+            <script>
+                for (var i = 1; i <= 10; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 11; i <= 20; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 21; i <= 30; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 31; i <= 40; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 41; i <= 50; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 51; i <= 60; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 61; i <= 70; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 71; i <= 80; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 81; i <= 90; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+            <script>
+                for (var i = 91; i <= 100; i++) {
+                    document.write("<button id='b" + i + "'>" + i + "</button>")
+                }
+            </script>
+
+        </div>
+        <input type="submit" value="Jugar de nuevo" id="again" onclick="Again()">
+    </div>
+
+</body>
+
+</html>
