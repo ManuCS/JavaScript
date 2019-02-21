@@ -1,0 +1,23 @@
+h1{
+    text-align: center;
+}
+
+div input.lgrifo{
+    width: 2em;
+    height: 2em;
+    text-align: center;
+}
+
+
+
+/* Esto es para cambiar el color del placeholder */
+input.lgrifo::placeholder{
+    color:rgba(255, 255, 255, 0.7);
+}
+
+
+div#contenedor{
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+}
