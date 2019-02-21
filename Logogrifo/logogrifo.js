@@ -4,6 +4,9 @@ let palabras = [];
 let posiciones = [""];
 
 
+let arrayPalabra = [];
+
+
 
 $(document).ready(function () {
 
@@ -21,7 +24,7 @@ $(document).ready(function () {
             //Presenta los inputs de cada letra de las palabras
             PresentaInputs(palabras);
 
-            $('input').on('keypress', Comprueba);
+            $('input').on('keyup', Comprueba);
 
         }
     });
@@ -44,23 +47,60 @@ $(document).ready(function () {
             $("#contenedor").append(div);
 
             for (let j = 0; j < palabras[i].palabra.length; j++) {
-                console.log(palabras[i].palabra[j]);
-                console.log(posiciones.indexOf(palabras[i].palabra[j]));
-                var casilla = "<input type='text' class='lgrifo btn-info' maxlength='1' placeholder='"+posiciones.indexOf(palabras[i].palabra[j])+"'>";
+                // console.log(palabras[i].palabra[j]);
+                // console.log(posiciones.indexOf(palabras[i].palabra[j]));
+                //Pongo clase p + el número de palabra que le corresponde para luego comprobar y corregir
+                var casilla = "<input type='text' class='lgrifo btn-info p" +i+"' maxlength='1' placeholder='"+posiciones.indexOf(palabras[i].palabra[j])+"'>";
                 var selector = "#palabra" + i;
                 $(selector).append(casilla);
             }
             $(selector).append("<br>" + palabras[i].pista);
         }
-        console.log($('input').length);
+        // console.log($('input').length);
     }
 
 
     function Comprueba(){
         //array de inputs con sus propiedades
-        let inputs = $('inputs');
+        let inputs = $('input');
 
-        console.log(inputs);
+        // console.log($(this).attr("placeholder"));
+        // console.log(inputs[2].placeholder);
+
+        for(let i = 0; i < inputs.length; i++){
+            if($(this).attr("placeholder") === inputs[i].placeholder){
+                inputs[i].value = $(this).val();
+            }
+        }
+
+        let cont = 0;
+
+        for(let i = 0; i < 6; i++){
+            let inputsPalabra = $(".p"+i);
+            
+            for(j = 0; j < inputsPalabra.length; j++){
+                if(/^[a-zA-Záéíóú]$/.test(inputsPalabra[j].value) == false){
+                    cont++;
+                    break;
+                }
+                else{
+                    if(inputsPalabra[j].placeholder != posiciones.indexOf(inputsPalabra[j].value.toLowerCase())){
+                        cont++;
+                        break;
+                    }
+                }                
+            }
+
+            inputsPalabra = [];
+        }
+
+
+        if(cont == 0){
+            $("input").removeClass("btn-info").addClass("btn-success").attr("disabled", "disabled");
+
+
+        }
+
     }
 
 
