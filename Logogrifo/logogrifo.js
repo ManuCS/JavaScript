@@ -97,10 +97,8 @@ $(document).ready(function () {
 
         if(cont == 0){
             $("input").removeClass("btn-info").addClass("btn-success").attr("disabled", "disabled");
-
-
+            alert("¡Has ganado!")
         }
-
     }
 
 

@@ -1,0 +1,74 @@
+header{
+    color:black;
+}
+
+h1{
+    color: rgb(7, 7, 49);
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    text-decoration: underline;
+}
+
+.card, .match {
+    width: 100px;
+    height: 150px;
+    margin: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+img{
+    width: 95px;
+    height: 150px;
+}
+
+
+.tablero{
+    width:50%;
+    margin:auto;
+    text-align: center;
+
+}
+
+body{
+    background-image: url("cartas/fondo2.jpg");
+}
+
+
+section{
+    width: 45%;
+    margin:auto;
+    text-align: left;
+	margin-bottom: 10px;
+}
+
+section .restart{
+    float: right;
+    cursor: pointer;
+}
+
+.aciertos{
+    display: inline-block;
+    margin: 0 1em;
+}
+
+.crono{
+    display: inline-block;
+    margin: 0 1em;
+}
+
+section{
+    font-family: 'Indie Flower', cursive;
+    color: rgb(7, 7, 49);
+}
+
+
+ol li{
+    font-family: 'Indie Flower', cursive;
+    color: rgb(7, 7, 49);
+}
+
+ol{
+    text-align: center;
+    list-style-position:inside;
+}

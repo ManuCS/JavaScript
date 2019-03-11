@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de parejas</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
+    <script src="parejas.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Encuentra las parejas</h1>
+    </header>
+
+    <div class="juego">
+
+        <section>
+            <span class="movimientos">
+                Movimientos: 0
+            </span>
+            <div class="aciertos">
+                Aciertos: 0
+            </div>
+
+            <div class="crono">
+                Tiempo: <span class="tiempo">0 min 0 seg</span>
+            </div>
+
+            <div class="restart" onclick="Presenta(cartas)">
+                Reiniciar <i class="fa fa-repeat"></i>
+            </div>
+        </section>
+
+        <div class="tablero"></div>
+
+    </div>
+
+</body>
+
+</html>
